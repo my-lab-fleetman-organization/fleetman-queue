@@ -25,24 +25,9 @@ pipeline {
 
       stage('Build and Push Image') {
          steps {
-           script {
-              dockerImage = docker build -t ${REPOSITORY_TAG} 
+           sh 'docker image build -t ${REPOSITORY_TAG} .'
          }
-	} 
       }
-
-      stage('Deploy Image') {
-        steps {
-          script {
-                   docker.withRegistry( '', 'dockerhub') {
-                   dockerImage.push()
-                 }
-          }
-    
-       }
-      }  
-
-
 
       stage('Deploy to Cluster') {
           steps {
