@@ -26,7 +26,7 @@ pipeline {
       stage('Build and Push Image') {
          steps {
            script {
-              dockerImage = docker build -t ${REPOSITORY_TAG} .
+              dockerImage = docker build -t ${REPOSITORY_TAG} 
          }
 	} 
       }
